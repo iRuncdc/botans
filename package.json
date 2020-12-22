@@ -10,7 +10,14 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "discord.js": "^12.5.0",
+    "http": "^0.0.0",
+    "snekfetch": "^4.0.4",
+    "quick.db": "^7.1.2",
+    "discord.js-menu": "^2.2.0",
+    "os": "^0.1.1",
+    "pretty-ms": "^7.0.1"
   },
   "engines": {
     "node": "12.x"
