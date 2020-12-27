@@ -1,43 +1,34 @@
 const Discord = require('discord.js');
+exports.run = (client, message, args) => {
+  let reason = args.slice(1).join(' ');
+  let user = message.mentions.users.first();
+  let modlog = client.channels.find('name', 'mod-log');
+  if (!modlog) return message.reply('I cannot find a mod-log channel');
+  if (reason.length < 1) return message.reply('You must supply a reason for the ban.');
+  if (message.mentions.users.size < 1) return message.reply('You must mention someone to ban them.').catch(console.error);
 
-module.exports = {
-    name: "ban",
-    description: "Kicks a member from the server",
+  if (!message.guild.member(user).bannable) return message.reply('I cannot ban that member');
+  message.guild.ban(user, 2);
 
-    async run (client, message, args) {
+  const embed = new Discord.RichEmbed()
+    .setColor(0x00AE86)
+    .setTimestamp()
+    .addField('Action:', 'Ban')
+    .addField('User:', `${user.username}#${user.discriminator} (${user.id})`)
+    .addField('Modrator:', `${message.author.username}#${message.author.discriminator}`)
+    .addField('Reason', reason);
+  return client.channels.get(modlog.id).sendEmbed(embed);
+};
 
-        if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('You can\'t use that!')
-        if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send('I don\'t have the right permissions.')
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: 0
+};
 
-        const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-
-        if(!args[0]) return message.channel.send('Please specify a user');
-
-        if(!member) return message.channel.send('Can\'t seem to find this user. Sorry \'bout that :/');
-        if(!member.bannable) return message.channel.send('This user can\'t be banned. It is either because they are a mod/admin, or their highest role is higher than mine');
-
-        if(member.id === message.author.id) return message.channel.send('Bruh, you can\'t ban yourself!');
-
-        let reason = args.slice(1).join(" ");
-
-        if(!reason) reason = 'Unspecified';
-
-        member.ban(`${reason}`).catch(err => { 
-          message.channel.send('Something went wrong')
-            console.log(err)
-        })
-
-        const banembed = new Discord.MessageEmbed()
-        .setTitle('Member Banned')
-        .setThumbnail(member.user.displayAvatarURL())
-        .addField('User Banned', member)
-        .addField('Kicked by', message.author)
-        .addField('Reason', reason)
-        .setFooter('Time kicked', client.user.displayAvatarURL())
-        .setTimestamp()
-
-        message.channel.send(banembed);
-
-
-    }
-}
+exports.help = {
+  name: 'ban',
+  description: 'Bans the mentioned user.',
+  usage: 'ban [mention] [reason]'
+};
