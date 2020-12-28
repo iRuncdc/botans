@@ -6,6 +6,7 @@ const http = require("http");
 
 const express = require("express")
 const app = express ()
+client.snipes = new Discord.Collection();
 
 app.get("/", (req, res) => {
   res.sendStatus(200)
