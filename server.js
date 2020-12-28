@@ -1,8 +1,14 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const { GiveawaysManager } = require('discord-giveaways');
+const db = require('./database.js');
+const ms = require('ms');
+
+
 //UPTIME ROBOT (WEB)
 const { get } = require("snekfetch");
 const http = require("http");
+
 
 const express = require("express")
 const app = express ()
@@ -110,6 +116,103 @@ client.on('guildMemberAdd', member => {
    channel.send(embed);
 });
 
+//giveaway
+const manager = new GiveawaysManager(client, {
+    storage: "./give.json",
+    updateCountdownEvery: 10000, // Means 10 seconds
+    default: {
+        botsCanWin: false,
+        exemptPermissions: [],
+        embedColor: "RED",
+        reaction: "🎉"
+    }
+})
+client.giveawaysManager = manager;
 
+
+
+client.on('messageReactionAdd', async(messageReaction, user) => {
+    if(user.bot) return;
+    if(messageReaction.emoji.name === '🎉') {
+
+        let serverID = await db.get(`server_${messageReaction.message.channel.id}`)
+        //for(i=0; i<serverID.length; i++) { // This is loop function
+            console.log(user.id)
+            //let Server_ID = bot.guilds.cache.get(i)
+            let User_IN_server = client.guilds.cache.get(serverID).members.cache.get(user.id)
+
+            if(User_IN_server) {
+                user.send(`You entry approved!`)
+            } else {
+                messageReaction.users.remove(user.id)
+                user.send(`You entry not approved!`)
+            }
+
+        //}
+
+    } else {
+        return console.log('oi')
+    }
+});
+
+
+
+client.on('message', async message => {
+    let prefix = "is!"
+    const ms = require("ms"); 
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+ 
+    if(command === "gstart"){
+       if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('You can\'t use that!')
+        if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send('I don\'t have the right permissions.')
+
+
+        let time = ms(args[0]);
+        let prize = args.slice(3).join(" ");
+        let winners = parseInt(args[2]);
+        let server_link = args[1];
+
+        client.fetchInvite(server_link).then(async(invite) => {
+            console.log(invite.guild.id)
+            let bot_is_in_server = client.guilds.cache.get(invite.guild.id)
+            if(!bot_is_in_server) {
+                return message.channel.send(`Sorry, But i am not in that server!`)
+            }
+            let Here = await db.get(`server_${message.channel.id}`)
+            if(Here === invite.guild.id) {
+            } else {
+                db.add(`server_${message.channel.id}`, invite.guild.id) //Here we wil add Server id in database
+            }
+
+        client.giveawaysManager.start(message.channel, {
+            time: time,
+            prize: prize,
+            winnerCount: winners,
+            messages: {
+                giveaway: "🎉🎉 **GIVEAWAY** 🎉🎉",
+                giveawayEnded: "🎉🎉 **GIVEAWAY ENDED** 🎉🎉",
+                timeRemaining: "Time remaining: **{duration}**!",
+                inviteToParticipate: `Must be the member of ${client.guilds.cache.get(invite.guild.id).name}`,
+                winMessage: "Congratulations, {winners}! You won **{prize}**!",
+                embedFooter: "Giveaways",
+                noWinner: "Giveaway cancelled, no valid participations.",
+                hostedBy: "Hosted by: {user}",
+                winners: "winner(s)",
+                endedAt: "Ended at",
+                units: {
+                    seconds: "seconds",
+                    minutes: "minutes",
+                    hours: "hours",
+                    days: "days",
+                    pluralS: false // Not needed, because units end with a S so it will automatically removed if the unit value is lower than 2
+                }
+            }
+        })
+   
+    })
+    }
+
+});
 
 client.login(process.env.TOKEN);
