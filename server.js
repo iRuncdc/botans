@@ -76,7 +76,7 @@ try {
 
  client.on('guildMemberAdd', (member) => {
     console.log(member)
-    const message = `Hello Senpai!!! <@${member.id}> <a:II_AME_KININARIMASU:783245048397168671>`
+    const message = `Hello Senpai!!! <@${member.id}> `
 
     const welcomeChannel = member.guild.channels.cache.get('681912351624003626')
 
@@ -103,7 +103,7 @@ client.on('guildMemberAdd', member => {
 <a:II_AYAME_APEX:783243164563144724> **Take the roles** <#682041803297521697>
 <a:II_AYAME_APEX:783243164563144724> **Introduce your self**  <#682041469867262025>
 
-**Semoga Betah Senpai!!!**<a:II_MORI_SHINDEIRU:783246512913252392>
+**Semoga Betah Senpai!!!**
 `)
   .addField('Total Members', member.guild.memberCount, true )
   .setColor('#fe0000')
