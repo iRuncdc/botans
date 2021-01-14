@@ -2,10 +2,12 @@ const discord = require('discord.js')
 
 
 module.exports = {
-   if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('You can\'t use that!')
-        if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send('kamu tidak memiliki permission.')
+
   
       run: async (client, msg, args) => {
+          if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send('You can\'t use that!')
+        if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.channel.send('kamu tidak memiliki izin.')
+  
           let embedtext = args.slice(0).join(" ")
           if(!embedtext) return msg.channel.send("Masukan kata-kata terlebih dahulu!")
 
