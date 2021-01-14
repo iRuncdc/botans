@@ -73,7 +73,7 @@ module.exports= {
   
     let successfullyembed = new Discord.MessageEmbed()
       .setTitle(`${banned.tag} has been successfully banned.`)
-      .setColor("#2C2F33");
+      .setColor("#fe0000'");
   
     message.channel.send(successfullyembed);
 

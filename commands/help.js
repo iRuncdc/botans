@@ -7,7 +7,8 @@ exports.run = async (client, message) => {
   .setThumbnail(client.user.displayAvatarURL({format: 'png', dynamic: true})+"?size=2048")
   .setDescription("") //isi desk nya ae dah serah lau
   .addField('FUN', '`avatar` `ping`', true)
-  .addField('Mod', '`embedsay` `ban` `dm` `say` `servericon`', true)
+  .addField('Mod', '`embedsay` `ban` `dm` `say` `servericon` `banlog`', true)
+ 
 
   message.channel.send(embed)
 }
