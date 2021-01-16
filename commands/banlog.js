@@ -36,6 +36,7 @@ module.exports = {
         .setTimestamp()
 
         message.channel.send(banembed);
+message.delete()
 
 
     }

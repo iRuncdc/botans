@@ -76,6 +76,7 @@ module.exports= {
       .setColor("#fe0000'");
   
     message.channel.send(successfullyembed);
+message.delete()
 
   }
 }
