@@ -10,12 +10,12 @@
           "^public/",                                                                                                             
        ":dist/"                                                                                                       
        ],                                                                                                                       
-       "include": [                                                                                                                                            
-      "\\.js$",                                                                                                                                                               
-      "\\.json",                                                                             
-       "\\.html",                                                                  
+       "include": [      asdasd                                                                                                                                      
+      "\\.js$",        asdasd                                                                                                                                                       
+      "\\.json",  asdasd                                                                           
+       "\\.html",     asdasd                                                             
          "\\.txt"                                          
-      ]                                                            
+      ]       asdasd                                                     
    },                                
     "throttle": 8640000                      
-}                                
+}         asd
