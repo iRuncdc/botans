@@ -26,7 +26,7 @@ client.on("ready", async () => {
  let membersCount = client.guilds.cache.map(guild => guild.memberCount).reduce((a, b) => a + b, 0)
   const status = [
     (`Maintenance`),
-    `${membersCount} Member`, //gunanya untuk count user
+    ``, //gunanya untuk count user
     `Isekai Internation!!` //gunanya untuk count server yang dimasuki oleh bot
     ]
   setInterval(() => {
