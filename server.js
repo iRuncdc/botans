@@ -99,9 +99,9 @@ client.on('guildMemberAdd', member => {
 **Welcome to __Isekai Internation __**
 
 **Don't Forget** 
-<a:scroll_up:804278775533273118> **Read The Rules On** <#682037630418157583>
-<a:scroll_up:804278775533273118> **Take the roles** <#682041803297521697>
-<a:scroll_up:804278775533273118> **Introduce your self**  <#682041469867262025>
+<:000226pepe:690788990504271943> **Read The Rules On** <#682037630418157583>
+<:000226pepe:690788990504271943> **Take the roles** <#682041803297521697>
+<:000226pepe:690788990504271943> **Introduce your self**  <#682041469867262025>
 
 **Semoga Betah Senpai!!!**
 `)
