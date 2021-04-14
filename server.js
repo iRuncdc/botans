@@ -94,14 +94,14 @@ client.on('guildMemberAdd', member => {
   .setAuthor('')
   .setThumbnail(`${member.user.displayAvatarURL()}`)
   .setDescription(`
-**Hey yoo my senpai __${member.user.tag}__ ** <a:II_INAFF:783242775352311809>  
+**Hey yoo my senpai __${member.user.tag}__ ** <:Smile_3:702152529689051166>  
   
 **Welcome to __Isekai Internation __**
 
 **Don't Forget** 
-<a:II_AYAME_APEX:783243164563144724> **Read The Rules On** <#682037630418157583>
-<a:II_AYAME_APEX:783243164563144724> **Take the roles** <#682041803297521697>
-<a:II_AYAME_APEX:783243164563144724> **Introduce your self**  <#682041469867262025>
+<a:scroll_up:804278775533273118> **Read The Rules On** <#682037630418157583>
+<a:scroll_up:804278775533273118> **Take the roles** <#682041803297521697>
+<a:scroll_up:804278775533273118> **Introduce your self**  <#682041469867262025>
 
 **Semoga Betah Senpai!!!**
 `)
