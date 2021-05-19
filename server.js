@@ -76,7 +76,7 @@ try {
 
  client.on('guildMemberAdd', (member) => {
     console.log(member)
-    const message = `Hello Senpai!!! <@${member.id}> `
+    const message = `Hello Senpai!!! <@${member.id}<a:II_Botan_PoiPoi:773966463634767892> > `
 
     const welcomeChannel = member.guild.channels.cache.get('681912351624003626')
 
@@ -94,16 +94,16 @@ client.on('guildMemberAdd', member => {
   .setAuthor('')
   .setThumbnail(`${member.user.displayAvatarURL()}`)
   .setDescription(`
-**Hey yoo my senpai __${member.user.tag}__ ** <:Smile_3:702152529689051166>  
+**Hey yoo my senpai __${member.user.tag}__ ** <a:II_WATAME_Fukkireta:774966337746370560>
   
 **Welcome to __Isekai Internation __**
 
 **Don't Forget** 
-<:000226pepe:690788990504271943> **Read The Rules On** <#682037630418157583>
-<:000226pepe:690788990504271943> **Take the roles** <#682041803297521697>
-<:000226pepe:690788990504271943> **Introduce your self**  <#682041469867262025>
+<a:II_loved:702438843722367028> **Read The Rules On** <#682037630418157583>
+<a:II_loved:702438843722367028> **Take the roles** <#682041803297521697>
+<a:II_loved:702438843722367028> **Introduce your self**  <#682041469867262025>
 
-**Semoga Betah Senpai!!!**
+**Semoga Betah Senpai!!! <a:II_loved:702438843722367028>**
 `)
   .addField('Total Members', member.guild.memberCount, true )
   .setColor('#fe0000')
