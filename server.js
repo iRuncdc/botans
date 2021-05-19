@@ -76,7 +76,7 @@ try {
 
  client.on('guildMemberAdd', (member) => {
     console.log(member)
-    const message = `Hello Senpai!!! <@${member.id}> > `
+    const message = `Hello Senpai!!! <@${member.id}>  `
 
     const welcomeChannel = member.guild.channels.cache.get('681912351624003626')
 
