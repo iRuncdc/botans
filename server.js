@@ -78,14 +78,14 @@ try {
     console.log(member)
     const message = `Hello Senpai!!! <@${member.id}>  `
 
-    const welcomeChannel = member.guild.channels.cache.get('681912351624003626')
+    const welcomeChannel = member.guild.channels.cache.get('849954463773884417')
 
     welcomeChannel.send(message)
   })
 
 client.on('guildMemberAdd', member => {
   // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.cache.find(ch => ch.id === '681912351624003626');
+  const channel = member.guild.channels.cache.find(ch => ch.id === '849954463773884417');
   // Do nothing if the channel wasn't found on this server
   if (!channel) return;
   // Send the message, mentioning the member
