@@ -5,7 +5,7 @@ const { MessageEmbed } = require('discord.js')
 
 exports.run = async (client, message) => {
   let embed = new MessageEmbed()
-  .setAuthor('Thank You @namaorang to 2x boosting', 'https://cdn.discordapp.com/emojis/707059456952762471.gif?v=1')
+  .setAuthor('Thank You  ', 'https://cdn.discordapp.com/emojis/707059456952762471.gif?v=1')
   .setThumbnail('')
   .setDescription(`
 Dont Forget To Contact Server Manager To Claim The Benefit
