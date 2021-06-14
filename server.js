@@ -117,4 +117,24 @@ client.on('guildMemberAdd', member => {
 });
 
 
+client.on('message', message => {
+  if (message.content === 'is!boost') {
+    var member= message.mentions.members.first();
+    let embed = new Discord.MessageEmbed()
+        .setAuthor('Thank You', 'https://cdn.discordapp.com/emojis/707059456952762471.gif?v=1')
+    .setThumbnail('https://cdn.discordapp.com/attachments/672075685640273940/853950365954080768/original.gif')
+      .setDescription(`**Dont Forget To Take role in #830051712210960414 Claim The Benefit**
+<@&669912116446101518>`)
+    
+  .setColor('#ef5dff')
+    .setTimestamp()
+      .setFooter('ISEI BOOSTER',);
+    message.channel.send(embed)
+  }
+});
+
+
+
+
+
 client.login(process.env.TOKEN);
