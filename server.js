@@ -117,7 +117,11 @@ client.on('guildMemberAdd', member => {
 });
 
 
-
+client.on('message', message => {
+  if (message.content === 'wlc') {
+    message.reply('<a:II_Stars:775298075295088640> <a:II_WC1:775297506695053322> <a:II_WC2:775297534670274560> <a:II_Stars:775298075295088640>');
+  }
+});
 
 
 
